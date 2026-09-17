@@ -40,18 +40,18 @@
 
 ---
 
-## 4. Evaluation Challenge Fee Policy (Beta Cohort Guarantee)
+## 4. Evaluation Challenge Fee & Market Risk Policy (Non-Reimbursable)
 
-*Applicable only if explicitly selected in Schedule A:*  
-4.1. **Standard Terms:** In the event an account is disqualified by the Prop Firm, neither party owes the other any performance royalty. The Licensee's loss is limited strictly to the challenge purchase fee paid to the Prop Firm.  
-4.2. **Beta Cohort Challenge Guarantee (If Activated):** If Voltacent authorizes the "Challenge Guarantee" for an enrolled beta account, and the account is breached due to an algorithmic drawdown violation while under Voltacent's exclusive automation, Voltacent will reimburse the Licensee for the direct cost of the challenge evaluation fee within seven (7) business days.
+4.1. **Client Fee Responsibility:** The Licensee is solely responsible for all evaluation purchase fees, challenge registration costs, platform charges, and account reset fees paid to third-party Prop Firms.  
+4.2. **Strict Zero Reimbursement Policy:** Under no circumstances shall Voltacent refund, reimburse, guarantee, or be held liable for any challenge evaluation fees, account breaches, or disqualifications incurred on the Licensee's account.  
+4.3. **Mutual No-Fault Termination:** In the event an evaluation account is disqualified or fails to achieve funded status, neither party owes the other any fees, penalties, or compensation. The Agreement terminates with zero continuing liability for either party.
 
 ---
 
 ## 5. Account Exclusivity & Interference
 
 5.1. **No Manual Intervention:** The Licensee explicitly agrees **not** to place manual trades, modify open stop-loss or take-profit orders, or connect third-party Expert Advisors while the account is managed by Voltacent.  
-5.2. **Breach of Exclusivity:** Any manual interference by the Licensee immediately voids all fee guarantees and grants Voltacent the right to terminate automation immediately.
+5.2. **Breach of Exclusivity:** Any manual interference by the Licensee immediately terminates this Agreement and grants Voltacent the right to halt automation and revoke software licenses without notice.
 
 ---
 
