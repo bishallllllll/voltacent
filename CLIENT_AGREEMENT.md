@@ -21,6 +21,7 @@
 * Maximum 1 active USD currency leg simultaneously (`VAR_090`).
 * Dynamic trailing stop loss limits and automated daily drawdown ceilings (`VAR_059`).
 * Decision bar timing calibrated to point-in-time H1 candle closes ($\tau \ge 0.58$).
+2.3. **Mandatory Platform Requirement (MetaTrader 5 / MT5 Only):** The Software is engineered exclusively for automated execution via **MetaTrader 5 (MT5)**. The Licensee **must** select an MT5-supported account tier that permits algorithmic Expert Advisor (EA) execution when purchasing their Prop Firm challenge. Proprietary web terminals, TradeLocker, MatchTrader, DXtrade, and manual-only platforms are strictly unsupported. Voltacent assumes no obligation or liability to manage or trade unsupported platforms.
 
 ---
 
@@ -57,7 +58,7 @@
 
 ## 6. Execution & Acceptance
 
-By connecting and submitting Prop Firm login credentials to Voltacent's execution gateway, the Licensee acknowledges, accepts, and agrees to be bound by the terms of this Agreement.
+By connecting and submitting supported **MetaTrader 5 (MT5)** Prop Firm login credentials (Account ID, Master Password, and Server Name) to Voltacent's execution gateway, the Licensee acknowledges, accepts, and agrees to be bound by all terms, conditions, and risk policies of this Agreement.
 
 ---
 
