@@ -1725,8 +1725,9 @@ alpha = response.json()
           <div class="logo-icon" style="width: 24px; height: 24px; font-size: 12px;" aria-hidden="true">⚡</div>
           <span style="font-weight: 700; color: var(--text-primary);">Voltacent Quantitative Technologies</span>
         </div>
-        <div>
-          &copy; 2026 Voltacent Quant. Institutional Quantitative Alpha &amp; Execution API.
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <span>&copy; 2026 Voltacent Quant.</span>
+          <a href="mailto:contact@bishalsarkar.me" style="color: var(--accent-cyan); text-decoration: none; font-weight: 500;">contact@bishalsarkar.me</a>
         </div>
       </div>
       <p class="disclaimer">
@@ -1835,7 +1836,7 @@ alpha = response.json()
         feedback.innerHTML = `✓ Thank you! Spot reserved for <strong>${emailInput.value.trim()}</strong>. Opening email client to confirm your waitlist position...`;
         
         setTimeout(() => {
-          window.location.href = `mailto:waitlist@voltacent.com?subject=Early%20Access%20Waitlist%20Request&body=Please%20reserve%20early%20sandbox%20access%20for%20my%20email:%20${email}`;
+          window.location.href = `mailto:contact@bishalsarkar.me?subject=Voltacent%20API%20Early%20Access%20Request&body=Please%20reserve%20early%20sandbox%20access%20for%20my%20email:%20${email}`;
         }, 800);
       };
 

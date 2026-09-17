@@ -31,3 +31,12 @@ Official public landing page and developer documentation portal for **Voltacent 
 Copyright &copy; 2026 Voltacent Quantitative Technologies. All rights reserved.
 
 *Regulatory & Risk Disclaimer:* Quantitative trading involves substantial risk of capital loss. Historical backtested walk-forward results and live forward testing are research evaluations and not guarantees of future performance. Voltacent provides quantitative technology and software APIs, not financial advisory services.
+
+---
+
+## 📬 Institutional Contact & Inquiries
+
+For technical due diligence, custom VPC peering, or enterprise API credentials:
+- **Primary Contact:** [`contact@bishalsarkar.me`](mailto:contact@bishalsarkar.me)
+- **Portal:** [https://bishalsarkar.me/voltacent/](https://bishalsarkar.me/voltacent/)
+
