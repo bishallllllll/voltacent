@@ -1,0 +1,128 @@
+{
+  "status": "ONLINE",
+  "node_id": "aws-ec2-canary-01",
+  "region": "us-east-1",
+  "uptime_hours": 210,
+  "last_evaluation_utc": "2026-09-16 08:45:00",
+  "next_evaluation_utc": "2026-09-16 09:00:00",
+  "account": {
+    "login": "CANARY-ECN-01",
+    "broker": "Tier-1 Prime ECN",
+    "currency": "USD",
+    "balance": 5025.27,
+    "equity": 5025.27,
+    "margin": 0.0,
+    "free_margin": 5025.27,
+    "open_positions": 0
+  },
+  "performance": {
+    "net_pnl_usd": 25.27,
+    "net_pnl_bps": 50.5,
+    "total_campaigns": 9,
+    "win_rate_pct": 66.7,
+    "winning_trades": 6,
+    "losing_trades": 3,
+    "win_rate_since_threshold_upgrade": 83.3
+  },
+  "recent_trades": [
+    {
+      "date": "2026-09-16",
+      "symbol": "GBPUSD",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 6.85,
+      "net_bps": 13.7,
+      "exit_type": "Target TP1 Hit",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-16",
+      "symbol": "EURGBP",
+      "direction": "Short",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 4.18,
+      "net_bps": 8.4,
+      "exit_type": "Target TP1 Hit",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-15",
+      "symbol": "USDCAD",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 9.32,
+      "net_bps": 18.6,
+      "exit_type": "Time-Exit 8h",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-14",
+      "symbol": "EURJPY",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 11.62,
+      "net_bps": 23.2,
+      "exit_type": "Time-Exit 8h",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-14",
+      "symbol": "AUDUSD",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": -14.40,
+      "net_bps": -28.8,
+      "exit_type": "Time-Exit 8h",
+      "status": "SCRATCH"
+    },
+    {
+      "date": "2026-09-11",
+      "symbol": "AUDUSD",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 3.00,
+      "net_bps": 6.0,
+      "exit_type": "Time-Exit 8h",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-09",
+      "symbol": "USDJPY",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": 13.02,
+      "net_bps": 26.0,
+      "exit_type": "Time-Exit 8h",
+      "status": "PROFIT"
+    },
+    {
+      "date": "2026-09-08",
+      "symbol": "EURUSD",
+      "direction": "Long",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": -6.10,
+      "net_bps": -12.2,
+      "exit_type": "Time-Exit 8h",
+      "status": "SCRATCH"
+    },
+    {
+      "date": "2026-09-08",
+      "symbol": "EURGBP",
+      "direction": "Short",
+      "ticket": "Shuck_A_Split",
+      "volume": 0.10,
+      "profit_usd": -0.82,
+      "net_bps": -1.6,
+      "exit_type": "Time-Exit 8h",
+      "status": "SCRATCH"
+    }
+  ]
+}
