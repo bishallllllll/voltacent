@@ -8,7 +8,6 @@
 #   HF_TOKEN      - (optional) Hugging Face token, only if the repo is private
 set -euo pipefail
 
-pip install --upgrade pip
 pip install -r requirements.txt
 
 # --- engine code -------------------------------------------------------
