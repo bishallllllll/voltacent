@@ -1,0 +1,18 @@
+[Unit]
+Description=Voltacent Triad API
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/voltacent-api
+Environment="PYTHONUNBUFFERED=1"
+Environment="SHUCK_ENGINE_DIR=/home/ubuntu/shuck-engine"
+# Market data comes from ClickHouse Cloud via the engine's own loader config;
+# no local clickhouse-server.service dependency.
+ExecStart=/usr/bin/python3 -m uvicorn app:app --host 127.0.0.1 --port 18900 --workers 2
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

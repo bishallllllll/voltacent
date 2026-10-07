@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: voltacent-api
+    runtime: python
+    plan: starter            # $7/mo, no sleep; inference is not latency-critical but keys must stay up
+    buildCommand: ./render-build.sh
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT --workers 1
+    healthCheckPath: /v1/health
+    disk:
+      name: voltacent-keys
+      mountPath: /var/data
+      sizeGB: 1              # SQLite key DB only; ~$0.10/mo
+    envVars:
+      - key: SHUCK_ENGINE_DIR
+        value: /opt/shuck-engine
+      - key: PYTHONUNBUFFERED
+        value: 1
+      # --- set these in the Render dashboard, never commit values ---
+      - key: GITHUB_TOKEN
+        sync: false          # fine-grained PAT, read-only on bishallllllll/shuck-engine
+      - key: CLICKHOUSE_HOST
+        sync: false
+      - key: CLICKHOUSE_USER
+        sync: false
+      - key: CLICKHOUSE_PASSWORD
+        sync: false
+      # Add any other CLICKHOUSE_* / engine env vars the loader needs here.

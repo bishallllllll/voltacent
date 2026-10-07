@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+# shuck-engine inference dependencies (the engine itself is cloned at build time)
+xgboost>=2.0
+pandas>=2.0
+clickhouse-connect>=0.7
+pyyaml>=6.0
+numpy>=1.26
