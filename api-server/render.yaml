@@ -3,7 +3,7 @@ services:
     name: voltacent-api
     runtime: python
     plan: starter            # $7/mo, no sleep; inference is not latency-critical but keys must stay up
-    buildCommand: ./render-build.sh
+    buildCommand: bash render-build.sh
     startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT --workers 1
     healthCheckPath: /v1/health
     disk:
