@@ -18,6 +18,10 @@ services:
       # --- set these in the Render dashboard, never commit values ---
       - key: GITHUB_TOKEN
         sync: false          # fine-grained PAT, read-only on bishallllllll/shuck-engine
+      - key: HF_REPO_ID
+        sync: false          # Hugging Face repo holding the 3 model .pkl files
+      - key: HF_TOKEN
+        sync: false          # HF token, only needed if the HF repo is private
       - key: CLICKHOUSE_HOST
         sync: false
       - key: CLICKHOUSE_USER
