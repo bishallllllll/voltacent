@@ -48,10 +48,15 @@ dl() { # dl <hf-filename> <dest-path> [expected-sha256]
 }
 
 mkdir -p "$ENGINE_DIR/models"
-dl "xgboost_fold11_20260904_094734.pkl" "$ENGINE_DIR/models/xgboost_fold11.pkl"
+# Model downloads are best-effort for now — the service runs without models
+# (degraded) and they are added later via HF. Nothing here fails the build.
+dl "xgboost_fold11_20260904_094734.pkl" "$ENGINE_DIR/models/xgboost_fold11.pkl" \
+  || echo "WARNING: classifier not on HF yet — direction leg disabled."
 dl "xgboost_reg.pkl" "$ENGINE_DIR/models/xgboost_reg.pkl" \
-  "8aa938f601f42d5ab3681fcef4f3268d110ef023b73660b9fe8ee59f067ddf8c"
+  "8aa938f601f42d5ab3681fcef4f3268d110ef023b73660b9fe8ee59f067ddf8c" \
+  || echo "WARNING: xgboost_reg.pkl not on HF yet — magnitude leg disabled."
 dl "xgboost_vol.pkl" "$ENGINE_DIR/models/xgboost_vol.pkl" \
-  "f2dcdbf1427122ff44d4484e4217fec698f70791ecbdc9e8206f23d75c1fa12a"
+  "f2dcdbf1427122ff44d4484e4217fec698f70791ecbdc9e8206f23d75c1fa12a" \
+  || echo "WARNING: xgboost_vol.pkl not on HF yet — volatility leg disabled."
 
 echo "Build OK."

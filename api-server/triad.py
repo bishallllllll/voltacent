@@ -31,27 +31,34 @@ def _utcnow_iso() -> str:
 
 class TriadEngine:
     def __init__(self) -> None:
+        # Every leg is optional: the service starts degraded with zero models
+        # and legs are added later. Nothing here raises at startup.
+        self._predict_latest_bar = None
+        self._reg = None
+        self._vol = None
+        self.legs = {"direction": False, "magnitude": False, "volatility": False}
+
         try:
             from inference.predict import predict_latest_bar, load_model
-            from inference.regression import build_live_reg_provider
-            from inference.volatility import build_live_vol_provider
-        except Exception as exc:
-            raise TriadError(f"Cannot import shuck-engine inference modules: {exc}")
-
-        self._predict_latest_bar = predict_latest_bar
-        try:
             load_model(verify_manifest=True)  # sha-pinned, fail-closed on tamper
+            self._predict_latest_bar = predict_latest_bar
+            self.legs["direction"] = True
         except Exception as exc:
-            raise TriadError(f"Classifier failed to load: {exc}")
+            print(f"WARNING: direction leg unavailable: {exc}", flush=True)
 
         try:
+            from inference.regression import build_live_reg_provider
             self._reg = build_live_reg_provider()
+            self.legs["magnitude"] = True
         except Exception as exc:
-            raise TriadError(f"Regression gate failed to load: {exc}")
+            print(f"WARNING: magnitude leg unavailable: {exc}", flush=True)
+
         try:
+            from inference.volatility import build_live_vol_provider
             self._vol = build_live_vol_provider()
+            self.legs["volatility"] = True
         except Exception as exc:
-            raise TriadError(f"Volatility gate failed to load: {exc}")
+            print(f"WARNING: volatility leg unavailable: {exc}", flush=True)
 
         # Model identity for /v1/health (keep in sync with deployment manifest)
         self.model_versions = {
@@ -82,6 +89,8 @@ class TriadEngine:
 
     def signals(self, instruments=None):
         """Direction + probability per instrument, latest closed bar."""
+        if not self.legs["direction"]:
+            raise TriadError("Direction model not deployed yet.")
         df = self._frame(instruments)
         inst_col = self._col(df, "instrument", "symbol", "pair")
         prob_col = self._col(df, "probability", "prob", "p_long", "pred_proba")
@@ -100,6 +109,8 @@ class TriadEngine:
 
     def magnitude(self, instruments=None):
         """Expected move in pips + hurdle verdict per instrument."""
+        if not self.legs["magnitude"]:
+            raise TriadError("Magnitude model not deployed yet.")
         df = self._frame(instruments)
         inst_col = self._col(df, "instrument", "symbol", "pair")
         out = []
@@ -120,6 +131,8 @@ class TriadEngine:
 
     def volatility(self, instruments=None):
         """Expected volatility + regime per instrument."""
+        if not self.legs["volatility"]:
+            raise TriadError("Volatility model not deployed yet.")
         df = self._frame(instruments)
         inst_col = self._col(df, "instrument", "symbol", "pair")
         out = []
@@ -137,8 +150,10 @@ class TriadEngine:
         return out
 
     def health(self):
+        live = [k for k, v in self.legs.items() if v]
         return {
-            "status": "ok",
+            "status": "ok" if len(live) == 3 else ("degraded" if live else "no_models"),
+            "legs": self.legs,
             "models": self.model_versions,
             "threshold": 0.62,
         }
