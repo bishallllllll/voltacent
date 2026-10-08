@@ -161,5 +161,4 @@ class TriadEngine:
             "legs": self.legs,
             "models": self.model_versions,
             "threshold": 0.62,
-            "errors": self.errors,
         }
