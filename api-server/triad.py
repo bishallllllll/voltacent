@@ -16,7 +16,8 @@ import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 
-SHUCK_ENGINE_DIR = Path(os.environ.get("SHUCK_ENGINE_DIR", "/home/ubuntu/shuck-engine"))
+SHUCK_ENGINE_DIR = Path(os.environ.get("SHUCK_ENGINE_DIR")
+                       or (Path(__file__).parent / "shuck-engine"))
 if str(SHUCK_ENGINE_DIR) not in sys.path:
     sys.path.insert(0, str(SHUCK_ENGINE_DIR))
 

@@ -8,11 +8,14 @@
 #   HF_TOKEN      - (optional) Hugging Face token, only if the repo is private
 set -euo pipefail
 
+# Engine lives inside the project dir — /opt is not writable on Render.
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ENGINE_DIR="${SHUCK_ENGINE_DIR:-$SCRIPT_DIR/shuck-engine}"
+
 pip install -r requirements.txt
 
 # --- engine code -------------------------------------------------------
 : "${GITHUB_TOKEN:?GITHUB_TOKEN is not set}"
-ENGINE_DIR="${SHUCK_ENGINE_DIR:-/opt/shuck-engine}"
 if [ -d "$ENGINE_DIR/.git" ]; then
   echo "Updating existing shuck-engine checkout..."
   git -C "$ENGINE_DIR" pull --ff-only
