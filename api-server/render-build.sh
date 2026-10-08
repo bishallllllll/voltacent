@@ -30,10 +30,15 @@ AUTH=()
 if [ -n "${HF_TOKEN:-}" ]; then AUTH=(-H "Authorization: Bearer ${HF_TOKEN}"); fi
 
 dl() { # dl <hf-filename> <dest-path> [expected-sha256]
+  # Returns non-zero on failure (caller uses || to degrade gracefully).
+  # Never calls exit — that would bypass the caller's || handling.
   local src="$1" dest="$2" want="${3:-}"
   echo "Downloading ${src} ..."
-  curl -sfL "${AUTH[@]}" \
-    "https://huggingface.co/${HF_REPO_ID}/resolve/main/${src}" -o "$dest"
+  if ! curl -sfL "${AUTH[@]}" \
+    "https://huggingface.co/${HF_REPO_ID}/resolve/main/${src}" -o "$dest"; then
+    echo "Download failed for ${src} (not on HF or no access)" >&2
+    return 1
+  fi
   if [ -n "$want" ]; then
     local got
     got=$(sha256sum "$dest" | cut -d' ' -f1)
@@ -41,7 +46,7 @@ dl() { # dl <hf-filename> <dest-path> [expected-sha256]
       echo "ERROR: SHA256 mismatch for ${dest}" >&2
       echo "  expected: ${want}" >&2
       echo "  got:      ${got}" >&2
-      exit 1
+      return 1
     fi
     echo "SHA256 OK: ${dest}"
   else
