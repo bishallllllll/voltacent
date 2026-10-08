@@ -4,6 +4,7 @@ uvicorn[standard]>=0.30
 # xgboost is pinned EXACTLY — the deployment manifest refuses to run on any
 # other version (cross-version tree serialization can silently shift predictions).
 xgboost==3.2.0
+scikit-learn>=1.3
 pandas>=2.0
 clickhouse-connect>=0.7
 pyyaml>=6.0
