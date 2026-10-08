@@ -1,7 +1,9 @@
 fastapi>=0.115
 uvicorn[standard]>=0.30
 # shuck-engine inference dependencies (the engine itself is cloned at build time)
-xgboost>=2.0
+# xgboost is pinned EXACTLY — the deployment manifest refuses to run on any
+# other version (cross-version tree serialization can silently shift predictions).
+xgboost==3.2.0
 pandas>=2.0
 clickhouse-connect>=0.7
 pyyaml>=6.0
