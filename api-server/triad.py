@@ -38,6 +38,7 @@ class TriadEngine:
         self._reg = None
         self._vol = None
         self.legs = {"direction": False, "magnitude": False, "volatility": False}
+        self.errors = {}
 
         try:
             from inference.predict import predict_latest_bar, load_model
@@ -45,6 +46,7 @@ class TriadEngine:
             self._predict_latest_bar = predict_latest_bar
             self.legs["direction"] = True
         except Exception as exc:
+            self.errors["direction"] = f"{type(exc).__name__}: {exc}"
             print(f"WARNING: direction leg unavailable: {exc}", flush=True)
 
         try:
@@ -52,6 +54,7 @@ class TriadEngine:
             self._reg = build_live_reg_provider()
             self.legs["magnitude"] = True
         except Exception as exc:
+            self.errors["magnitude"] = f"{type(exc).__name__}: {exc}"
             print(f"WARNING: magnitude leg unavailable: {exc}", flush=True)
 
         try:
@@ -59,6 +62,7 @@ class TriadEngine:
             self._vol = build_live_vol_provider()
             self.legs["volatility"] = True
         except Exception as exc:
+            self.errors["volatility"] = f"{type(exc).__name__}: {exc}"
             print(f"WARNING: volatility leg unavailable: {exc}", flush=True)
 
         # Model identity for /v1/health (keep in sync with deployment manifest)
@@ -157,4 +161,5 @@ class TriadEngine:
             "legs": self.legs,
             "models": self.model_versions,
             "threshold": 0.62,
+            "errors": self.errors,
         }
